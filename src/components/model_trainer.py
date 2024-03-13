@@ -36,11 +36,40 @@ class ModelTrainer:
                 "GradientBoostingRegressor":GradientBoostingRegressor(),
                 "AdaBoostRegressor": AdaBoostRegressor(),
                 "XGBRegressor":XGBRegressor(),
-                "CatBoostRegressor":CatBoostRegressor()
+                "CatBoostRegressor":CatBoostRegressor(verbose=0)
 
             }
+            params={
+                "LinearRegressor":{},
+                "DecisionTreeRegressor":{
+                    'max_depth': [None, 5, 10, 29],
+                },
+                "RandomForestRegressor":{
+                    'n_estimators': [5, 10, 15],
+                    'max_depth': [None,5, 10, 20],
+                },
+                "GradientBoostingRegressor":{
+                    'learning_rate': [0.01, 0.1, 0.2],
+                    'n_estimators': [10, 15, 25],
+                },
+                "AdaBoostRegressor":{
+                    'n_estimators': [10, 15, 25],
+                    'learning_rate': [0.001, 0.01, 0.1, 1]
+                },
+                "XGBRegressor":{
+                    'n_estimators': [10, 15, 25],
+                    'learning_rate': [0.001, 0.01, 0.1, 1],
+                },
+                "CatBoostRegressor":{
+                    'learning_rate': [0.01, 0.1, 0.2],
+                    'depth': [6, 3, 8],
+
+                }
+
+            }
+
             logging.info("Model training started")
-            best_model_name,best_accuracy=evaluate_model(x_train,y_train,x_test,y_test,models)
+            best_model_name,best_accuracy=evaluate_model(x_train,y_train,x_test,y_test,models,params)
             if best_accuracy<0.6:
                 raise CustomeException("No best model found",sys)
             

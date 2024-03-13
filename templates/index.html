@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a{
+            font-size: 50px;
+            text-align: center;
+            width: max-content;
+            background-color: rgb(83, 178, 216);
+            text-decoration: none;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+        }
+        a:hover{
+            background-color: rgb(68, 105, 119);
+        }
+    </style>
+    <a href="{{ url_for('predict_datapoint') }}">Go to prediction page</a>
+</body>
+</html>
