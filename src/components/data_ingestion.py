@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from src.components.data_transformation import DataTranformation
+from src.components.model_trainer import ModelTrainer
 @dataclass
 class DataIngestionConfig:
     train_data_path=os.path.join('artifacts','train.csv')
@@ -40,7 +41,9 @@ if __name__=="__main__":
     obj=DataIngestion()
     train_path,test_path=obj.initiateDataIngestion()
     data_tranform=DataTranformation()
-    a,b,c=data_tranform.initiate_transformation(train_path=train_path,test_path=test_path)
+    train_data,test_data,transformer_path=data_tranform.initiate_transformation(train_path=train_path,test_path=test_path)
+    model_training=ModelTrainer()
+    best_accuracy=model_training.training_model(train_data,test_data)
 
 
             

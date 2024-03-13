@@ -81,17 +81,18 @@ class DataTranformation:
             logging.info("features and target separated form train and test data")
 
             train_X=transformer_obj.fit_transform(train_features)
-            test_X=transformer_obj.fit(test_features)
+            test_X=transformer_obj.transform(test_features)
 
             logging.info("fit_tranform on train features and tranform on test features")
 
-            train_complete=np.c_[
-                train_X,np.array(train_target)
-            ]
-            test_complete=[
-                test_X,np.array(test_target)
-            ]
+            train_complete = np.c_[
+                    train_X, np.array(train_target)
+                ]
 
+            test_complete = np.c_[
+                    test_X, np.array(test_target)
+                ]
+            
             filepath=self.data_tranformationConfig.data_transformation_pickle_path
             logging.info('saving.... data_tranformer.plk file')
 
@@ -104,5 +105,5 @@ class DataTranformation:
             )
 
         except Exception as e:
-            raise CustomeException(e,sys)    
+            raise CustomeException(e,sys)
     
