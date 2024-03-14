@@ -26,12 +26,13 @@ def predict_datapoint():
             lunch=request.form.get('lunch'),
             test_preparation_course=request.form.get('test_preparation_course'),
             reading_score=float(request.form.get('writing_score')),
-            writing_score=float(request.form.get('reading_score'))
+            writing_score=float(request.form.get('reading_score')),
+            math_score=float(request.form.get('math_score'))
         )
         df=user_data.user_data_into_dataFrame()
         prediction=Predict()
         predicted_score=prediction.prediction_output(df)
-        return render_template('home.html',results=predicted_score)
+        return render_template('home.html',results=predicted_score[0])
     
 if __name__=="__main__":
     app.run(host="0.0.0.0",debug=True) 

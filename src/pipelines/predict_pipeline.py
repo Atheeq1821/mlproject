@@ -27,7 +27,7 @@ class Predict:
 
 class Get_Data:
     def __init__(self,gender,race_ethnicity,parental_level_of_education,lunch,
-                 test_preparation_course,reading_score,writing_score):
+                 test_preparation_course,reading_score,writing_score,math_score):
         self.gender=gender
         self.race_ethnicity=race_ethnicity
         self.parental_level_of_education=parental_level_of_education
@@ -35,6 +35,7 @@ class Get_Data:
         self.test_preparation_course=test_preparation_course
         self.reading_score=reading_score
         self.writing_score=writing_score
+        self.math_score=math_score
 
     def user_data_into_dataFrame(self):
         try:
@@ -45,7 +46,8 @@ class Get_Data:
                 'lunch':[self.lunch],
                 'test_preparation_course':[self.test_preparation_course],
                 'reading_score':[self.reading_score],
-                'writing_score':[self.writing_score]
+                'writing_score':[self.writing_score],
+                'math_score':[self.math_score]
             } 
             logging.info("user data successfully converted into dataframe")
             return pd.DataFrame(data_dict)   

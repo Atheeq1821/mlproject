@@ -104,11 +104,16 @@
                 placeholder="Enter your Reading Score" min='0' max='100' />
         </div>
         <div class="mb-3">
-            <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required />
+            <label class="form-label">Math Score out of 100</label>
+            <input class="form-control" type="number" name="math_score"
+                placeholder="Enter your Math Score" min='0' max='100' />
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict your Performance Score" required />
         </div>
     </form>
     <h2>
-       THE  prediction is {{results}}
+       The  prediction is {{results}}
     </h2>
    <body>
 </html>

@@ -25,7 +25,7 @@ class DataTranformation:
         """ This function tranforms data preprocess it and returns the preprocessor object"""
 
         try:
-            num_columns=['reading_score','writing_score']
+            num_columns=['reading_score','writing_score','math_score']
             cat_columns=[
                 'gender',
                 'race_ethnicity',
@@ -68,7 +68,7 @@ class DataTranformation:
             test_df=pd.read_csv(test_path)
             logging.info("data read for preprocessing")
 
-            target_column='math_score'
+            target_column='average'
             transformer_obj=self.get_data_tranformer()
 
             logging.info("Created transformaer object")
